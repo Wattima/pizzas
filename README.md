@@ -1,25 +1,47 @@
-# README
+*Pizza Restaurants API*
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**Overview**
+This is a simple RESTful API that allows users to create and manage pizza restaurants and the pizzas they serve. It is built with Ruby on Rails.
 
-Things you may want to cover:
+**Installation**
+To install the application, follow these steps:
+1. Clone the repository to your local machine: `https://github.com/Wattima/pizzas`
+2. Navigate to the project directory: `cd restaurant-pizza-api`
+3. Install the necessary gems: `bundle install`
+4. Create and migrate the database: `rails db:create && rails db:migrate`
+5. (Optional) Seed the database with sample data: `rails db:seed`
 
-* Ruby version
+**Usage**
+To run the application, start the Rails server: `rails server`. The API can then be accessed using a tool like Postman.
 
-* System dependencies
+**Models**
+The following relationships have been established:
 
-* Configuration
+- A `Restaurant` has many `Pizza`s through `RestaurantPizza`
+- A `Pizza` has many `Restaurant`s through `RestaurantPizza`
+- A `RestaurantPizza` belongs to a `Restaurant` and belongs to a `Pizza`
 
-* Database creation
+**Validations**
+The `RestaurantPizza` model has a validation that requires the `price` to be between 1 and 30.
 
-* Database initialization
+**Routes**
+The following routes have been set up:
 
-* How to run the test suite
+- GET `/restaurants`: Returns a list of all restaurants in the database
+- GET `/restaurants/:id`: Returns information about a specific restaurant, including the pizzas it serves
+- DELETE `/restaurants/:id`: Deletes a specific restaurant and any associated `RestaurantPizza`s
+- GET `/pizzas`: Returns a list of all pizzas in the database
+- POST `/restaurant_pizzas`: Creates a new `RestaurantPizza` and associates it with an existing `Pizza` and `Restaurant`
 
-* Services (job queues, cache servers, search engines, etc.)
+**Errors**
+If a request is made with invalid parameters, the API will respond with a JSON error message.
 
-* Deployment instructions
+**Contributing**
+Bug reports and pull requests are welcome on GitHub at https://github.com/Wattima/pizzas. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
 
-* ...
-# pizzas
+**License**
+This application is available as open source under the terms of the MIT License.
+
+**Code of Conduct**
+Everyone interacting in the Pizza Restaurants API project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the code of conduct.
+
