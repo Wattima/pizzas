@@ -1,21 +1,2 @@
-databases:
- - name: sqlite3
- ipAllowList:[]
-
-services:
- - type: web
- name: rails
- env: ruby
- buildCommand: "./bin/render-build.sh"
- startCommand: bundle exec rails s
- envVars:
-  - key: RAILS_MASTER_KEY
-  sync: false
-  - key: DATABASE_URL
-  name: sqlite3
-  property: connectionString
- - type: redis
- name: redis
- ipAllowList: []
- plan: free
- maxmemoryPolicy: noeviction
+buildCommand: bundle install --without development:test
+startCommand: bundle exec foreman start
